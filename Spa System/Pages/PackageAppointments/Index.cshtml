@@ -1,0 +1,73 @@
+﻿@page
+@model Spa_System.Pages.PackageAppointments.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    @*<a asp-page="Create">Create New</a>*@
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PackageAppointment[0].AppointmentDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PackageAppointment[0].AppointmentTime)
+            </th>
+            @*<th>
+            @Html.DisplayNameFor(model => model.PackageAppointment[0].discountGiven)
+        </th>*@
+            @*<th>
+            @Html.DisplayNameFor(model => model.PackageAppointment[0].Status)
+        </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.PackageAppointment[0].Beautician)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.PackageAppointment[0].Customer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PackageAppointment[0].CustomerPackage)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.PackageAppointment) {
+        <tr>
+            <td>
+                @item.AppointmentDate.Value.ToString("dddd, dd MMMM yyyy")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppointmentTime)
+            </td>
+            @*<td>
+            @Html.DisplayFor(modelItem => item.discountGiven)
+        </td>*@
+            @*<td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Beautician.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerPackage.PackageName)
+            </td>
+            <td>
+                @*<a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |*@
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Cancel Appointment</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
